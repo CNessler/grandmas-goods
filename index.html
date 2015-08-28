@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html ng-app="grandmasGoods">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="./style.css" charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular-animate.js"></script>
+    <script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Content</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <label for="category">Search By Category:</label>
+            <select id="category" ng-model='category'>
+              <option value="furniture">Furniture</option>
+              <option value="music">Music</option>
+              <option value="technology">Technology</option>
+              <option value="decor">Decor</option>
+              <option value="kithchen">Kitchen</option>
+              <option value="old">Old</option>
+              <option value="awesome">Awesome</option>
+              <option value="toy">Toy</option>
+              <option value="transportation">Transportation</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+          <label class='control-label' for="search">Search By Name:</label>
+            <input class='control-group' type="text" id='search' name="search" placeholder="Search" ng-model='search'>
+        </div>
+        <div class="col-md-3">
+          <button type="button" name="button">Checkout | Bag: {{items}}</button>
+        </div>
+      </div>
+      <div ng-controller="OldGoods">
+        <table>
+          <thead>
+            Goods
+          </thead>
+          <thead>
+            Information
+          </thead>
+            <tr ng-repeat='good in goods'>
+              <td>
+                <img class='img' ng-src="{{good.imageUrl}}" alt="works">
+              </td>
+              <td>
+                <div class="left">
+                  <h1>{{good.name}}</h1>
+                  <p><strong>Price: </strong>{{good.price | decimals}}</p>
+                  <p><strong>Year: </strong>{{good.year}}</p>
+                  <p><strong>Rating: </strong>{{good.rating}}</p>
+                  <p><strong>In Stock: </strong>yes or no</p>
+                  <p><strong>Categories: </strong></p>
+                  <ul ng-repeat='category in good.categories'>
+                    <li>{{category}}</li>
+                  </ul>
+                </div>
+                <div class="right">
+                  <h1>Quantity</h1>
+                  <select class="" name="">
+                    <option value="1">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                  <button type="button" name="addToBag">Add To Bag</button>
+                </div>
+              </td>
+            </tr>
+        </table>
+    </div>
+    <script src="../app/app.js"></script>
+    <script src="../app/controllers.js"></script>
+    <script src="../app/filters.js"></script>
+    </script>
+  </body>
+</html>
