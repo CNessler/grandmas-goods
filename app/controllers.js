@@ -4,11 +4,11 @@ app.controller('OldGoods', ['$scope', function ($scope) {
         _id: "55c8ee82152165d244b98300",
         name: "Vintage Record Player",
         year: '1952',
-        price: '15400',
+        price: 15400,
         inStock: 'true',
         rating: '1',
         imageUrl: "http://oldhousecrazy.files.wordpress.com/2012/10/old-house-crazy-diy-restore-an-old-stereo-console-02.jpg",
-        __v: 0,
+        quantity: 0,
         categories: [ "furniture", "music"]
     },
 
@@ -16,22 +16,22 @@ app.controller('OldGoods', ['$scope', function ($scope) {
         _id: "55c8ee82152165d244b98301",
         name: "Cow Bell",
         year: '1973',
-        price: '7348',
+        price: 7348,
         inStock: 'true',
         rating: '2',
         imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSElyQK80NEgJs2YIXM3gcj2psoEOuQZgeM2e-Mt2bEMXKM82qD",
-        __v: 0,
+        quantity: 0,
         categories: ["decor", "music"]
     },
     {
         _id: "55c8ee82152165d244b98302",
         name: "Ancient Tea Pot",
         year: '1938',
-        price: '4991',
+        price: 4991,
         inStock: 'true',
         rating: '4',
         imageUrl: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRHku4GnyiaVvCe2Ey1S5Ondcj_EPF0SScpkKd8dcIbs4OM0pnI",
-        __v: 0,
+        quantity: 0,
         categories: ["kitchen"]
     },
     {
@@ -42,7 +42,7 @@ app.controller('OldGoods', ['$scope', function ($scope) {
         inStock: true,
         rating: 1,
         imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ9aOP4REvFmDXRGoh3geQ5JU-HeBzLCkfv52eSOdeG0tEMfcW",
-        __v: 0,
+        quantity: 0,
         categories: ["furniture", "old", "awesome"]
     },
     {
@@ -54,7 +54,7 @@ app.controller('OldGoods', ['$scope', function ($scope) {
         inStock: true,
         rating: 1,
         imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtRqNCXm6cq-nlEjd9_B1L1oFokcMVLuPXZwJ0U9OuMmufBYHGJA",
-        __v: 0,
+        quantity: 0,
         categories: ["technology"]
     },
     {
@@ -65,7 +65,7 @@ app.controller('OldGoods', ['$scope', function ($scope) {
         inStock: true,
         rating: 3,
         imageUrl: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQZKEfd2z3Po53n580yyRUG6zXe3l6WTqGqwQudnUIKp4VwIUHigw",
-        __v: 0,
+        quantity: 0,
         categories: ["technology"]
     },
     {
@@ -76,7 +76,7 @@ app.controller('OldGoods', ['$scope', function ($scope) {
         inStock: true,
         rating: 3,
         imageUrl: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRs7BqNvqD2YWCvKLVDZg7mN07JX_Q7zGOhXabBy5HtoM-YUaNnaQ",
-        __v: 0,
+        quantity: 0,
         categories: ["toy"]
     },
     {
@@ -87,7 +87,7 @@ app.controller('OldGoods', ['$scope', function ($scope) {
         inStock: true,
         rating: 2,
         imageUrl: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQgoD8RfUFgGk4HIrP4inTRoLC2owRkYU9dxtRZ2Hjv0VGTvZ-z7g",
-        __v: 0,
+        quantity: 0,
         categories: ["furniture","decor"]
     },
     {
@@ -98,7 +98,7 @@ app.controller('OldGoods', ['$scope', function ($scope) {
         inStock: true,
         rating: 3,
         imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf9JHwwWYXcyzAq1lqdQ60gl7ST_nhXe5GpoE5cafxI-6VcbJFag",
-        __v: 0,
+        quantity: 0,
         categories: ["furniture","technology"]
     },
     {
@@ -109,8 +109,25 @@ app.controller('OldGoods', ['$scope', function ($scope) {
         inStock: true,
         rating: 2,
         imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2idaurhjiHK_IDb4n4JcPQIHXb3LDEE1H2-NKbTWY8Eb42zw5",
-        __v: 0,
+        quantity: 0,
         categories: ["transportation", "toy"]
     }
   ]
+  $scope.items = 2;
+
+  $scope.cart = [];
+
+  $scope.addToBag = function (good, amount) {
+    console.log($scope.items, "ITEMS");
+    $scope.items += Number(amount);
+    good.quantity = amount;
+    $scope.cart.push(good);
+  }
+
+  $scope.getItem = function () {
+     console.log("item count: "+$scope.items);
+     return $scope.items;
+  }
+
+
 }])

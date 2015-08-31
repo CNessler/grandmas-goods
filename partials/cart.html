@@ -1,0 +1,32 @@
+<div class="container">
+  <p>
+     ITEMS
+  </p>
+  <table class='table'>
+    <tr>
+      <td>Product</td>
+      <td>Quantity</td>
+      <td>Subtotal</td>
+      <td>Do</td>
+    </tr>
+      <tr ng-repeat='item in cart'>
+        <td>
+          <h1>{{item.name}}</h1>
+          <img class='img' ng-src="{{item.imageUrl}}" alt="works">
+          <p><strong>Year: </strong>{{item.year}}</p>
+          <span ng-repeat='category in item.categories | orderBy: category'><strong>Categories: </strong></span>
+          <span>{{category}},</span>
+          <p><strong>Rating: </strong>{{item.rating}}</p>
+        </td>
+        <td>
+          <p>
+            {{item.quantity}}
+          </p>
+        </td>
+        <td>
+          <a href="/partials/edit"><button type="button" name="edit">Edit</button></a>
+          <button type="button" name="remove">Remove</button>
+        </td>
+      </tr>
+  </table>
+</div>

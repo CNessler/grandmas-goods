@@ -1,0 +1,41 @@
+<div class="container">
+  <p>
+    {{items}} ITEMS
+  </p>
+  <table class='table'>
+    <tr>
+      <td>Goods</td>
+      <td>Information</td>
+    </tr>
+      <tr ng-repeat='good in goods | orderBy: price | filter: search'>
+        <td>
+          <img class='img' ng-src="{{good.imageUrl}}" alt="works">
+        </td>
+        <td>
+          <div class="left">
+            <h1>{{good.name}}</h1>
+            <p><strong>Price: </strong>{{good.price | decimals}}</p>
+            <p><strong>Year: </strong>{{good.year}}</p>
+            <p><strong>Rating: </strong>{{good.rating}}</p>
+            <p><strong>In Stock: </strong>yes or no</p>
+            <p><strong>Categories: </strong></p>
+            <ul ng-repeat='category in good.categories | orderBy: category'>
+              <li>{{category}}</li>
+            </ul>
+          </div>
+          <div class="right">
+            <h1>Quantity</h1>
+            <select ng-model='amount'>
+              <option value="1">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <button type="button" name="addToBag" ng-click="addToBag(good, amount)">Add To Bag</button>
+          </div>
+        </td>
+      </tr>
+  </table>
+</div>
