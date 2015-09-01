@@ -10,6 +10,9 @@ app.config(function ($routeProvider, $locationProvider) {
       templateUrl: '/partials/cart.html',
       controller: 'OldGoods'
     })
-
+    .when('/edit', {
+      templateUrl: '/partials/edit.html',
+      controller: 'OldGoods'
+    })
   $locationProvider.html5Mode(true);
 })

@@ -1,31 +1,31 @@
 <div class="container">
-  <p>
-     ITEMS
-  </p>
+  <h3 class='col-md-6'>My Goods</h3>
+  <h3 class='col-md-6 right'>Order Total: {{cart.total | decimals}}</h3>
   <table class='table'>
     <tr>
-      <td>Product</td>
+      <td>Goods</td>
       <td>Quantity</td>
       <td>Subtotal</td>
-      <td>Do</td>
     </tr>
-      <tr ng-repeat='item in cart'>
+      <tr ng-repeat='good in cart.goods | orderBy: price | filter: search'>
         <td>
-          <h1>{{item.name}}</h1>
-          <img class='img' ng-src="{{item.imageUrl}}" alt="works">
-          <p><strong>Year: </strong>{{item.year}}</p>
-          <span ng-repeat='category in item.categories | orderBy: category'><strong>Categories: </strong></span>
-          <span>{{category}},</span>
-          <p><strong>Rating: </strong>{{item.rating}}</p>
+          <h1>{{good.name}}</h1>
+          <img class='img' ng-src="{{good.imageUrl}}" alt="works">
+          <p><strong>Year: </strong>{{good.year}}</p>
+          <p><strong>Categories: </strong><span  ng-repeat='category in good.categories'>{{category}},</span></p>
+          <p><strong>Rating: </strong>{{good.rating}}</p>
         </td>
         <td>
-          <p>
-            {{item.quantity}}
-          </p>
+          <span ng-show='quantity'>{{good.quantity}}</span>
+          <input type="number" name="amount" ng-hide='change' ng-model='newAmt'>
         </td>
         <td>
-          <a href="/partials/edit"><button type="button" name="edit">Edit</button></a>
-          <button type="button" name="remove">Remove</button>
+          {{good.price * good.quantity | decimals}}
+        </td>
+        <td>
+          <button type="button" name="edit" ng-click='toggleInput()' ng-show='quantity'>Edit</button>
+          <button type="button" name="edit" ng-click='editQuantity(good, $scope.newAmt)' ng-hide='change'>Save</button>
+          <a href="/remove">Remove</a>
         </td>
       </tr>
   </table>
