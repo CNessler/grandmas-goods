@@ -12,7 +12,7 @@
           <h1>{{good.name}}</h1>
           <img class='img' ng-src="{{good.imageUrl}}" alt="works">
           <p><strong>Year: </strong>{{good.year}}</p>
-          <p><strong>Categories: </strong><span  ng-repeat='category in good.categories'>{{category}},</span></p>
+          <p><strong>Categories: </strong><span  ng-repeat='category in good.categories'>{{category}}, </span></p>
           <p><strong>Rating: </strong>{{good.rating}}</p>
         </td>
         <td>
@@ -25,7 +25,7 @@
         <td>
           <button type="button" name="edit" ng-click='toggleInput()' ng-show='quantity'>Edit</button>
           <button type="button" name="edit" ng-click='editQuantity(good, $scope.newAmt)' ng-hide='change'>Save</button>
-          <a href="/remove">Remove</a>
+          <button type="button" name="remove" ng-click='removeGood(good)'>Remove</button>
         </td>
       </tr>
   </table>

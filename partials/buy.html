@@ -4,7 +4,7 @@
       <td>Goods</td>
       <td>Information</td>
     </tr>
-      <tr ng-repeat='good in goods | orderBy: price | filter: search'>
+      <tr ng-repeat='good in goods | orderBy: category | filter: search'>
         <td>
           <img class='img' ng-src="{{good.imageUrl}}" alt="works">
         </td>
@@ -14,9 +14,9 @@
             <p><strong>Price: </strong>{{good.price | decimals}}</p>
             <p><strong>Year: </strong>{{good.year}}</p>
             <p><strong>Rating: </strong>{{good.rating}}</p>
-            <p><strong>In Stock: </strong>yes or no</p>
+            <p><strong>In Stock: </strong><span ng-show={{good.inStock}}>Yes</span><span ng-hide={{good.inStock}}>No</span></p>
             <p><strong>Categories: </strong></p>
-            <ul ng-repeat='category in good.categories | orderBy: category'>
+            <ul ng-repeat='category in good.categories'>
               <li>{{category}}</li>
             </ul>
           </div>

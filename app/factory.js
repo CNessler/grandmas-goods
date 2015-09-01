@@ -95,7 +95,7 @@ app.factory("GoodsService", function () {
         name: "Old School Radio",
         year: '1964',
         price: 1374,
-        inStock: true,
+        inStock: false,
         rating: 3,
         imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf9JHwwWYXcyzAq1lqdQ60gl7ST_nhXe5GpoE5cafxI-6VcbJFag",
         quantity: 0,
@@ -117,6 +117,9 @@ app.factory("GoodsService", function () {
   var cart = {quantity: 0, goods: [], total: 0};
   var funcs = {
     addToCart: function (good, amount) {
+      if(amount === undefined) {
+        amount = 1;
+      }
       cart.quantity += Number(amount);
       good.quantity = amount;
       cart.goods.push(good);
@@ -141,7 +144,16 @@ app.factory("GoodsService", function () {
         cart.total -= (diff * good.price)
       }
       good.quantity = Number(amount);
+    },
+
+    removeGood: function (good) {
+      cart.total -= (good.price * good.quantity);
+      cart.quantity -= (good.quantity)
+      var index = cart.goods.indexOf(good);
+      cart.goods.splice(index, 1);
     }
+
+
   }
   return funcs;
 

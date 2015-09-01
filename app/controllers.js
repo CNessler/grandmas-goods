@@ -3,6 +3,7 @@ app.controller('OldGoods', ['$scope', "GoodsService", function ($scope, GoodsSer
   $scope.goods = GoodsService.goods();
   $scope.addToCart = function () {
     GoodsService.addToCart(this.good, this.amount)
+    console.log($scope.cart, 'CART');
   }
   $scope.quantity = true;
   $scope.change = true;
@@ -17,5 +18,9 @@ app.controller('OldGoods', ['$scope', "GoodsService", function ($scope, GoodsSer
     GoodsService.editQuantity(this.good, this.newAmt)
     $scope.quantity = true;
     $scope.change = true;
+  }
+
+  $scope.removeGood = function () {
+    GoodsService.removeGood(this.good);
   }
 }])
